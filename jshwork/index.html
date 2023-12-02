@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color Square</title>
+  <style>
+    #colorSquare {
+      width: 200px;
+      height: 200px;
+      cursor: pointer;
+      border: 1px solid #000;
+    }
+    #colorCode {
+      text-align: center;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="colorSquare" onclick="changeColor()"></div>
+  <div id="colorCode"></div>
+
+  <script>
+    function changeColor() {
+      // Генерация случайного цвета
+      const randomColor = getRandomColor();
+
+      // Получение элементов
+      const colorSquare = document.getElementById('colorSquare');
+      const colorCode = document.getElementById('colorCode');
+
+      // Закраска квадрата
+      colorSquare.style.backgroundColor = randomColor;
+
+      // Отображение кода цвета
+      colorCode.textContent = `Color Code: ${randomColor}`;
+    }
+
+    function getRandomColor() {
+      // Генерация случайного шестнадцатеричного числа
+      const randomHex = Math.floor(Math.random()*16777215).toString(16);
+      // Дополнение числа нулями до 6 знаков
+      return `#${'0'.repeat(6 - randomHex.length)}${randomHex}`;
+    }
+  </script>
+</body>
+</html>
